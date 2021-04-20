@@ -51,7 +51,7 @@ import {
     );
   };
   export const reset = (email) => (dispatch) => {
-    return AuthService.rset(email).then(
+    return AuthService.reset(email).then(
       (response) => {
         dispatch({
           type: RESET_SUCCESS,
