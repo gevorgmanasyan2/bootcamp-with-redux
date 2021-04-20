@@ -1,124 +1,93 @@
-import React, {useState,useContext, useReducer} from 'react';
+import React, {useState} from 'react';
 import regIcon from '../../public/images/regIcon.png';
 import './register.css';
 import {useSelector,useDispatch} from 'react-redux';
 import {register} from '../../actions/auth';
 import validate from '../validation';
-// import useForm from './useForm';
-// import UserInputContext from './userInputContext';
-// import validate from './loginFormValidationRules';
-// import axios from 'axios';
-
 
 
 const Register=(props)=>{
 
-  const dispatch=useDispatch();
-const data=useSelector(state=>state)
+const dispatch=useDispatch();
 const error=useSelector(state=>state.message)
-let err;
-if(error!==""){
-  err={...error}
-}
-console.log(err);
-const[values,setValues]=useState({name:"",email:"",password:"",confirm:"",role:""});
+
+const[values,setValues]=useState({name:"",email:"",password:"",confirm:"",role:"user"});
 const[successful,setSuccessful]=useState(false);
-const[errforLocalUse,setErrforLocalUse]=useState(error||null);
-const[name,setName]=useState("");
-const[email,setEmail]=useState('')
-
-
-
-//    const rout="register";   
-//    const {values,errors,handleChange,handleSubmit} = useForm(login, validate, rout);    
-    //   function login() {
-    //     console.log('No errors, submit callback called!');        
-    //   } 
-     
-    // const InputStateReducer=useContext(UserInputContext);        
-    // const [state,dispatch]=useReducer(InputStateReducer.reducer,InputStateReducer.initialstate);
+const[radioCheck,setRadioCheck]=useState("user");
     
     const OnChange=(e)=>{        
       switch (e.target.name) {
         case "name":
-            setValues({...values, name:e.target.value})
-            setErrforLocalUse([{...errforLocalUse,name:validate(e.target.value)}])            
+            setValues({...values, name:e.target.value})                    
             break;
         case "email":
-            setValues({...values, email:e.target.value})
-            setErrforLocalUse({...errforLocalUse,email:validate(e.target.value)})           
+            setValues({...values, email:e.target.value})                     
             break;
         case "password":
-            setValues({...values, password:e.target.value})
-            setErrforLocalUse([{...errforLocalUse,password:validate(e.target.value)}])
+            setValues({...values, password:e.target.value})            
             break;   
             case "confirm":
-              setValues({...values, confirm:e.target.value})
-              setErrforLocalUse([{...errforLocalUse,confirm:validate(e.target.value)}])
+              setValues({...values, confirm:e.target.value})              
               break;   
               case "role":
                 setValues({...values, role:e.target.value})
-                setErrforLocalUse([{...errforLocalUse,role:validate(e.target.value)}])
-                break;        
+                setRadioCheck(e.target.value)                
+                break;     
+                     
         default:
             break;
     }   
-   
-    // setErrforLocalUse(error)      
+    
     }   
-    console.log("data", data); 
-    console.log("error", error);
-    console.log(successful);
-    console.log("errforLocalUse", errforLocalUse);
-    console.log("name", name);
-    console.log("email", email);
- const SendData=(e)=>{
-  dispatch({type:'SET_MESSAGE',payload:validate(values)})
-    // handleSubmit()                         
-   }
+    const onBlur=(e)=>{      
+      
+        switch (e.target.name) {
+          case 'name':
+            dispatch({type:'SET_MESSAGE_NAME',payload:e.target.value})                 
+            break;
+            case 'email':
+              dispatch({type:'SET_MESSAGE_EMAIL',payload:e.target.value})                            
+            break;
+            case 'password':
+              dispatch({type:'SET_MESSAGE_PASSWORD',payload:e.target.value})                           
+            break;
+            case 'confirm':
+              dispatch({type:'SET_MESSAGE_CONFIRM',payload:e.target.value})                            
+            break;
+            case 'role':
+              dispatch({type:'SET_MESSAGE_CHECKED',payload:e.target.value}) 
+              setRadioCheck(e.target.value)                           
+            break;        
+            
+          default:
+            break;
+        }
+    }
+    
+//     console.log("error", error);   
+//  const SendData=()=>{   
+//   console.log(values); 
+//   console.log(successful); 
+                          
+//    }
 
-   const SendDataToBackend=()=>{
+   const SendDataToBackend=(e)=>{
+    //  e.preventDefault()
+    for (const key in error) {      
+      if(error[key]!==""){
+             return
+      }
+      console.log("OK");
+      dispatch(register(values.name,values.email,values.password,values.role))
+    .then(() => {
+     setSuccessful(true);
+   })
+   .catch(() => {
+     setSuccessful(false);
+   });
+     }  
+    
 
-    dispatch(register(values.name,values.email,values.password,values.role))
-     .then(() => {
-      setSuccessful(true);
-    })
-    .catch(() => {
-      setSuccessful(false);
-    });
-    //   let objState={};            
-    //   for (const i in state) {           
-    //      if(state[i]!=="" && Object.keys(errors).length===0){
-    //           switch (i) {
-    //              case "name":
-    //                 objState[i]=state[i];
-    //                 break;
-    //              case "email":
-    //                 objState[i]=state[i];
-    //                 break;
-    //              case "password":
-    //                 objState[i]=state[i];
-    //                 break;
-    //              case "role":
-    //                 objState[i]=state[i];
-    //                 break;  
-    //              default:
-    //                 break;
-    //           }       
-    //      }     
-    // }      
-//     console.log(objState);
-//    axios.post(`https://devcamp-api-node.herokuapp.com/api/v1/auth/register`,objState, {
-//         headers:{
-//            'Content-Type': 'application/json',
-           
-//     }})
-//             .then(res => {               
-//                 localStorage.setItem('userToken',res.data.token);                 
-//                 props.history.push('./login');               
-//               }).catch(err => {
-//                 console.log(err, "< ERR")               
-//               })   
   }
     return(
         <>
@@ -138,39 +107,40 @@ const[email,setEmail]=useState('')
      </div>
      <div className="regInputs">
         <label>Name</label><br/>
-        <input type="text" name="name" placeholder="Enter Full Name" onChange={OnChange}   required autoComplete="off" />
-        {/* {errforLocalUse && (<p className="is-danger">{errforLocalUse[0].name}</p>)} */}
+        <input type="text" name="name" placeholder="Enter Full Name" onChange={OnChange} onBlur={onBlur}   required autoComplete="off" />        
+        <p className="is-danger">{error.message_name}</p>
      </div>
      <div className="regInputs">
      <label>Email Address</label><br/>
-        <input type="email" name="email" placeholder="Enter Email" onChange={OnChange}  required autoComplete="off" />
-        {/* {errforLocalUse && (<p className="is-danger">{errforLocalUse[0].email}</p>)} */}
-        {/* <p>{error.message.email}</p> */}
+        <input type="email" name="email" placeholder="Enter Email" onChange={OnChange} onBlur={onBlur} required autoComplete="off" />        
+        <p className="is-danger">{error.message_email}</p>
      </div>
      <div className="regInputs">
      <label>Password</label><br/>
-        <input type="password" name="password" placeholder="Enter Password" onChange={OnChange}  required autoComplete="off" />
-        {/* {(error.message.password!=undefined)?(<p className="is-danger">{error.message.password}</p>):""} */}
+        <input type="password" name="password" placeholder="Enter Password" onChange={OnChange} onBlur={onBlur} required autoComplete="off" />        
+        <p className="is-danger">{error.message_password}</p>
      </div>
      <div className="regInputs">
      <label>Confirm Password</label><br/>
-        <input type="password" name="confirm" placeholder="Confirm Password" onChange={OnChange}  required autoComplete="off" />
-        {/* {(error.message.confirm!=undefined)?(<p className="is-danger">{error.message.confirm}</p>):""} */}
+        <input type="password" name="confirm" placeholder="Confirm Password" onChange={OnChange} onBlur={onBlur} required autoComplete="off" />       
+        <p className="is-danger">{error.message_confirm}</p>
      </div>
      <div className="regRadio">
         <label>User Role</label><br/>
-        <input type="radio" name="role" value="user"  onChange={OnChange}/>
+        <input type="radio" id="userrole" name="role" value="user" checked={radioCheck==="user"} onChange={OnChange} onBlur={onBlur}/>
         <p>Regular User (Browse, Write reviews, etc)</p>
+        <p className="is-danger">{error.message_checked}</p>
         <br/>
-        <input type="radio" name="role" value="publisher"  onChange={OnChange}/>
+        <input type="radio" id="publisherrole" name="role" value="publisher" checked={radioCheck==="publisher"}  onChange={OnChange} onBlur={onBlur}/>
         <p>Bootcamp Publisher</p>
+        <p className="is-danger">{error.message_checked}</p>
      </div>     
          <div className="validationError">
              <p>* You must be affiliated with the bootcamp in
                   some way in order to add it to DevCamper.</p>
          </div>   
      <div>
-       <button className="regButton" type="button" onClick={SendDataToBackend} onClickCapture={SendData}>Register</button>
+       <button className="regButton" type="button" onClick={SendDataToBackend} >Register</button>
      </div>
   </div>
 </div>
