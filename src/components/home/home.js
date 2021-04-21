@@ -1,19 +1,19 @@
 import React,  {useState,useEffect} from 'react';
 import './home.css';
 import image1 from '../../public/images/image_1.png';
-import getBotcamp from '../../services/user.service';
+import {getBootcamp} from '../../services/user.service';
 import {useSelector,useDispatch} from 'react-redux';
 
 
 const Home=()=>{
     const dispatch=useDispatch();
-    const[data,setData]=useState([1,2,3]);   
-   
+    const[data,setData]=useState();   
+   console.log(data);
 
     useEffect(() => {
-        getBotcamp().then(
+      getBootcamp().then(
           (response) => {
-            setData(response.data);
+            setData(response.data.data);
           },
           (error) => {
             const _content =

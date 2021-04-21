@@ -17,8 +17,10 @@ import {
     return AuthService.register(name, email, password, role).then(
       (response) => {
         console.log(response);
+        localStorage.setItem('userToken',response.data.token);
         dispatch({
           type: REGISTER_SUCCESS,
+          payload:response.data,
         });
   
         dispatch({
@@ -36,6 +38,7 @@ import {
             error.response.data.message) ||
           error.message ||
           error.toString();
+          console.log('errMessage');
   
         dispatch({
           type: REGISTER_FAIL,
@@ -88,13 +91,14 @@ import {
   export const update = (currentPassword,newPassword) => (dispatch) => {
     return AuthService.update(currentPassword,newPassword).then(
       (response) => {
+        console.log(response);
         dispatch({
           type: UPDATE_SUCCESS,
         });
   
         dispatch({
           type: SET_MESSAGE,
-          payload: response.data.message,
+          payload: response.data,
         });
   
         return Promise.resolve();
@@ -155,7 +159,7 @@ import {
   
   export const logout = () => (dispatch) => {
     AuthService.logout();
-  
+  console.log("something");
     dispatch({
       type: LOGOUT,
     });

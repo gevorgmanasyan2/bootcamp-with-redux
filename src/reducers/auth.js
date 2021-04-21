@@ -24,6 +24,7 @@ import {
         return {
           ...state,
           isLoggedIn: false,
+          registeredUser:payload,
         };
       case REGISTER_FAIL:
         return {
@@ -55,12 +56,12 @@ import {
         case UPDATE_SUCCESS:
           return {
             ...state,
-            isLoggedIn: false,
+            // isLoggedIn: false,
           };
           case UPDATE_FAIL:
           return {
             ...state,
-            isLoggedIn: false,
+            // isLoggedIn: false,
           };
       case LOGOUT:
         return {

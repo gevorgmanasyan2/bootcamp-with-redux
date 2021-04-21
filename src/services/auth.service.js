@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API_URL = "https://devcamp-api-node.herokuapp.com/api/v1/auth/";
 
-const register = (name, email, password,role) => {
+const register = (name, email, password, role) => {
   return axios.post(API_URL + "register", {
     name,
     email,
@@ -10,7 +10,13 @@ const register = (name, email, password,role) => {
     role,
   },{
     headers:{'Content-Type':'application/json'}
-  });
+  })
+  // .then((response) => {
+  //   if (response.data.token) {
+  //     localStorage.setItem("user", JSON.stringify(response.data.token));
+  //   }
+  //   return response.data;
+  // });
 };
 
 const login = (email, password) => {
@@ -22,8 +28,9 @@ const login = (email, password) => {
       headers:{'Content-Type':'application/json'}
     })
     .then((response) => {
+      console.log(response);
       if (response.data.token) {
-        localStorage.setItem("login", JSON.stringify(response.data.token));
+        localStorage.setItem("user", JSON.stringify(response.data.token));
       }
       return response.data;
     });
@@ -44,14 +51,23 @@ const reset=(email)=>{
    },
    {
     headers:{'Content-Type':'application/json',
-  "Authorization":`Bearer ${(user && user.token)?user.token:null}`
+  "Authorization":`Bearer ${(user)?user:null}`
   }
   }
    )
  } 
 
 const logout = () => {
-  localStorage.removeItem("user");
+  const user=localStorage.getItem('user');
+  console.log("userTocenBefore",user);
+  return axios.get(API_URL + "logout",{headers:{"Authorization" : `Bearer ${user}`}}).then(()=>{
+    localStorage.removeItem("user");
+    
+  })
+  .catch((err)=>{
+
+  })
+  console.log("userTokenAfter",user);
 };
 
 export default {
