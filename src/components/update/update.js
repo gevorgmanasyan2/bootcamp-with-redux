@@ -51,12 +51,13 @@ const Update=(props)=>{
             }
             console.log("OK");
        dispatch(update(values.currentPassword,values.newPassword))
-       .then(() => {
-        console.log("UpdateOk");
-      })
-      .catch(() => {
-        console.log("updateErr");
-      });
+    //    .then(() => {
+    //     console.log("UpdateOk");
+    //     props.history.push('./home'); 
+    //   })
+    //   .catch(() => {
+    //     console.log("updateErr");
+    //   });
     }    
     }
 
