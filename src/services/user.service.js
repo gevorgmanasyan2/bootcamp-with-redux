@@ -9,6 +9,4 @@ const getBootcamp = () => {
 
 
 
-export default {
-  getBootcamp
-};
+export default getBootcamp;

@@ -107,22 +107,26 @@ const[radioCheck,setRadioCheck]=useState("user");
      </div>
      <div className="regInputs">
         <label>Name</label><br/>
-        <input type="text" name="name" placeholder="Enter Full Name" onChange={OnChange} onBlur={onBlur}   required autoComplete="off" />        
+        <input type="text" name="name" placeholder="Enter Full Name" value={values.name || ''}
+         onChange={OnChange} onBlur={onBlur}   required autoComplete="off" />        
         <p className="is-danger">{error.message_name}</p>
      </div>
      <div className="regInputs">
      <label>Email Address</label><br/>
-        <input type="email" name="email" placeholder="Enter Email" onChange={OnChange} onBlur={onBlur} required autoComplete="off" />        
+        <input type="email" name="email" placeholder="Enter Email" value={values.email || ''}
+         onChange={OnChange} onBlur={onBlur} required autoComplete="off" />        
         <p className="is-danger">{error.message_email}</p>
      </div>
      <div className="regInputs">
      <label>Password</label><br/>
-        <input type="password" name="password" placeholder="Enter Password" onChange={OnChange} onBlur={onBlur} required autoComplete="off" />        
+        <input type="password" name="password" placeholder="Enter Password" value={values.password || ''}
+         onChange={OnChange} onBlur={onBlur} required autoComplete="off" />        
         <p className="is-danger">{error.message_password}</p>
      </div>
      <div className="regInputs">
      <label>Confirm Password</label><br/>
-        <input type="password" name="confirm" placeholder="Confirm Password" onChange={OnChange} onBlur={onBlur} required autoComplete="off" />       
+        <input type="password" name="confirm" placeholder="Confirm Password" value={values.confirm || ''}
+         onChange={OnChange} onBlur={onBlur} required autoComplete="off" />       
         <p className="is-danger">{error.message_confirm}</p>
      </div>
      <div className="regRadio">

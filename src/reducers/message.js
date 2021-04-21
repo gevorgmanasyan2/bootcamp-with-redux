@@ -1,4 +1,4 @@
-import { SET_MESSAGE, CLEAR_MESSAGE, SET_MESSAGE_NAME, SET_MESSAGE_EMAIL, SET_MESSAGE_PASSWORD, SET_MESSAGE_CONFIRM, SET_MESSAGE_CHECKED } from "../actions/types";
+import { SET_MESSAGE, CLEAR_MESSAGE, SET_MESSAGE_NAME, SET_MESSAGE_EMAIL, SET_MESSAGE_PASSWORD, SET_MESSAGE_OLDPASSWORD, SET_MESSAGE_CONFIRM, SET_MESSAGE_CHECKED } from "../actions/types";
 
 
 const initialState = {};
@@ -46,6 +46,20 @@ export default function (state = initialState, action) {
       return {...state,message_password:'',initial_pass:payload}
     } if(payload.length>=6){
       return {...state,message_password:''}
+    }    
+    else{
+      return state
+    }
+    case SET_MESSAGE_OLDPASSWORD: 
+    if(payload===""){
+      return {...state,message_oldpassword:'Password is required'}
+    } if(payload.length<6){
+      return {...state,message_oldpassword:'Password must be 6 or more characters'}
+    }    
+    if(payload!==""){
+      return {...state,message_oldpassword:''}
+    } if(payload.length>=6){
+      return {...state,message_oldpassword:''}
     }    
     else{
       return state
