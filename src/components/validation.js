@@ -5,7 +5,7 @@ export default function validate(values) {
     }    
     if (!values.email) {
       errors.email = 'Email address is required';
-    } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
       errors.email = 'Email address is invalid';
     }
     if (!values.password) {
@@ -16,8 +16,11 @@ export default function validate(values) {
     if(!values.confirm){
       errors.confirm='The field must be filled in';     
     }
-    else if(values.confirm.length!==values.password.length){
+    else if(values.confirm!==values.password){
       errors.confirm="password and confirm fields must be the same"
+    }
+    if(!values.role){
+      errors.role='The button must be checked';     
     }
     return errors;
   };

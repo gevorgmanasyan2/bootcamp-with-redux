@@ -3,6 +3,8 @@ import regIcon from "../../public/images/regIcon.png";
 import "./register.css";
 import { useSelector, useDispatch } from "react-redux";
 import { register } from "../../actions/auth";
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import Validation from '../validation';
 
 const Register = (props) => {
   const dispatch = useDispatch();
@@ -42,27 +44,27 @@ const regMessage=useSelector(state=>state.auth.registeredUser);
     }
   };
   const onBlur = (e) => {
-    switch (e.target.name) {
-      case "name":
-        dispatch({ type: "SET_MESSAGE_NAME", payload: e.target.value });
-        break;
-      case "email":
-        dispatch({ type: "SET_MESSAGE_EMAIL", payload: e.target.value });
-        break;
-      case "password":
-        dispatch({ type: "SET_MESSAGE_PASSWORD", payload: e.target.value });
-        break;
-      case "confirm":
-        dispatch({ type: "SET_MESSAGE_CONFIRM", payload: e.target.value });
-        break;
-      case "role":
-        dispatch({ type: "SET_MESSAGE_CHECKED", payload: e.target.value });
-        setRadioCheck(e.target.value);
-        break;
+    // switch (e.target.name) {
+    //   case "name":
+    //     dispatch({ type: "SET_MESSAGE_NAME", payload: e.target.value });
+    //     break;
+    //   case "email":
+    //     dispatch({ type: "SET_MESSAGE_EMAIL", payload: e.target.value });
+    //     break;
+    //   case "password":
+    //     dispatch({ type: "SET_MESSAGE_PASSWORD", payload: e.target.value });
+    //     break;
+    //   case "confirm":
+    //     dispatch({ type: "SET_MESSAGE_CONFIRM", payload: e.target.value });
+    //     break;
+    //   case "role":
+    //     dispatch({ type: "SET_MESSAGE_CHECKED", payload: e.target.value });
+    //     setRadioCheck(e.target.value);
+    //     break;
 
-      default:
-        break;
-    }
+    //   default:
+    //     break;
+    // }
   };
   
   const SendDataToBackend = (e) => {    
@@ -99,7 +101,114 @@ const regMessage=useSelector(state=>state.auth.registeredUser);
               bootcamps
             </h4>
           </div>
-          <div className="regInputs">
+          <Formik
+       initialValues={{name:'', email: '', password: '', confirm:'',role:'' }}
+       validate={values => {       
+        const errors=Validation(values)        
+         return errors;
+       }}
+       onSubmit={(values, { setSubmitting }) => {
+         setTimeout(() => {
+           alert(JSON.stringify(values, null, 2));
+           setSubmitting(false);
+         }, 400);
+       }}
+     >
+       {({ isSubmitting }) => (
+         <Form>
+           <div className="regInputs">
+           <label >Email Address</label>
+              <br />
+           <Field  className="inp" type="text" name="name" placeholder="Enter Full Name" OnChange={OnChange} />
+           <ErrorMessage className="is-danger" name="name" component="div" />
+           </div>
+           <div className="regInputs">
+           <label >Email Address</label>
+              <br />
+           <Field  className="inp" type="email" name="email" placeholder="Enter Email" OnChange={OnChange} />
+           <ErrorMessage className="is-danger" name="email" component="div" />
+           </div>
+           <div className="regInputs">
+           <label>Password</label>
+              <br />
+           <Field className="inp" type="password" name="password" placeholder="Enter Password" OnChange={OnChange} />
+           <ErrorMessage className="is-danger" name="password" component="div" />
+           </div>
+           <div className="regInputs">
+           <label>Confirm Password</label>
+              <br />
+           <Field className="inp" type="password" name="confirm" placeholder="Confirm password" OnChange={OnChange} />
+           <ErrorMessage className="is-danger" name="confirm" component="div" />
+           </div>
+           <div className="regRadio">
+           <label >User Role</label>
+              <br />
+           <Field className="radioinp" type="radio" name="role" id="userrole" value="user" OnChange={OnChange}/>
+           <p>Regular User (Browse, Write reviews, etc)</p>
+           <br/>
+           <Field className="radioinp" type="radio" name="role"  id="publisherrole" value="publisher" OnChange={OnChange}/>
+           <p>Bootcamp Publisher</p>           
+           <ErrorMessage className="is-danger" name="role" component="div" />
+           </div>
+           <div className="validationError">
+            <p>
+              * You must be affiliated with the bootcamp in some way in order to
+              add it to DevCamper.
+            </p>
+          </div>
+           
+           <div >
+           <button className="regButton" type="submit" disabled={isSubmitting} onClick={SendDataToBackend} >
+           Register
+           </button>
+           </div>
+           
+         </Form>
+       )}
+     </Formik>
+     
+     {/* <div className="regRadio">
+            <label>User Role</label>
+            <br />
+            <input
+              type="radio"
+              id="userrole"
+              name="role"
+              value="user"
+              checked={radioCheck === "user"}
+              onChange={OnChange}
+              onBlur={onBlur}
+            />
+            <p>Regular User (Browse, Write reviews, etc)</p>
+            <p className="is-danger">{error.message_checked}</p>
+            <br />
+            <input
+              type="radio"
+              id="publisherrole"
+              name="role"
+              value="publisher"
+              checked={radioCheck === "publisher"}
+              onChange={OnChange}
+              onBlur={onBlur}
+            />
+            <p>Bootcamp Publisher</p>
+            <p className="is-danger">{error.message_checked}</p>
+          </div>
+          <div className="validationError">
+            <p>
+              * You must be affiliated with the bootcamp in some way in order to
+              add it to DevCamper.
+            </p>
+          </div>
+          <div>
+            <button
+              className="regButton"
+              type="button"
+              onClick={SendDataToBackend}
+            >
+              Register
+            </button> */}
+          {/* <div className="regInputs">
             <label>Name</label>
             <br />
             <input
@@ -200,7 +309,7 @@ const regMessage=useSelector(state=>state.auth.registeredUser);
             >
               Register
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
