@@ -1,7 +1,8 @@
-import React, {useState,useContext} from 'react';
+import React, {useState,useContext, useEffect} from 'react';
 import './update.css';
 import {useSelector,useDispatch} from 'react-redux';
-import {update} from '../../actions/auth';
+import {update,updatePassword} from '../../actions/auth';
+
 
 
 
@@ -9,9 +10,11 @@ import {update} from '../../actions/auth';
 const Update=(props)=>{
     const dispatch=useDispatch();
     const error=useSelector(state=>state.message);
+    const data=useSelector(state=>state.auth);
     
+    console.log();
     const[values,setValues]=useState({currentPassword:"",newPassword:"",confirmNewPassword:""});
-    console.log(error);
+   
     const OnChange=(e)=>{
         switch (e.target.name) {
             case "currentPassword":
@@ -49,18 +52,16 @@ const Update=(props)=>{
             if(error[key]!==""){
                    return
             }
-            console.log("OK");
-       dispatch(update(values.currentPassword,values.newPassword))
-    //    .then(() => {
-    //     console.log("UpdateOk");
-    //     props.history.push('./home'); 
-    //   })
-    //   .catch(() => {
-    //     console.log("updateErr");
-    //   });
-    }    
-    }
+            
 
+    }     
+            const {currentPassword,newPassword} = values
+            // const update=updatePassword(values)
+            dispatch(update(currentPassword,newPassword))
+            .then(()=>{
+                props.history.push('../home')
+            })  
+    }
     return(
         <>
        

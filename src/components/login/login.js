@@ -6,6 +6,8 @@ import Home from "../home/home";
 import AuthHeader from "../../services/auth-header";
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../../actions/auth";
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import Validation from '../validation';
 
 const Login = (props) => {
   const isLogin = AuthHeader();
@@ -17,6 +19,7 @@ const Login = (props) => {
   const error = useSelector((state) => state.message);
   const [values, setValues] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
+  console.log(values.password);
 console.log(user);
   const OnChange = (e) => {
     switch (e.target.name) {
@@ -87,7 +90,43 @@ console.log(user);
                 bootcamps
               </h5>
             </div>
-            <div className="inpts">
+            <Formik
+       initialValues={{ email: '', password: '' }}
+       validate={values => {       
+        const errors=Validation(values)        
+         return errors;
+       }}
+       onSubmit={(values, { setSubmitting }) => {
+         setTimeout(() => {
+           alert(JSON.stringify(values, null, 2));
+           setSubmitting(false);
+         }, 400);
+       }}
+     >
+       {({ isSubmitting }) => (
+         <Form>
+           <div className="inpts">
+           <label className="fLabel">Email Address</label>
+              <br />
+           <Field  className="inp" type="email" name="email" />
+           <ErrorMessage className="is-danger" name="email" component="div" />
+           </div>
+           <div className="inpts">
+           <label className="fLabel">Password</label>
+              <br />
+           <Field className="inp" type="password" name="password" />
+           <ErrorMessage className="is-danger" name="password" component="div" />
+           </div>
+           <div className="inpButton">
+           <button className="formBtn" type="submit" disabled={isSubmitting}>
+             Submit
+           </button>
+           </div>
+           
+         </Form>
+       )}
+     </Formik>
+            {/* <div className="inpts">
               <label className="fLabel">Email Address</label>
               <br />
               <input
@@ -128,7 +167,7 @@ console.log(user);
               >
                 Login
               </button>
-            </div>
+            </div> */}
 
             <div className="formFooter">
               <div>
