@@ -1,5 +1,7 @@
 import axios from "axios";
+import AuthHeader from './auth-header';
 
+const usertoken=AuthHeader();
 const API_URL = "https://devcamp-api-node.herokuapp.com/api/v1/auth/";
 
 const register = (name, email, password, role) => {
@@ -56,17 +58,12 @@ const reset = (email) => {
 
 
 
-const update = (currentPassword,newPassword) => {
-  const user=JSON.parse(localStorage.getItem('user')); 
-     
-      return axios.put(`https://devcamp-api-node.herokuapp.com/api/v1/auth/updatepassword`,{currentPassword,newPassword},
-    
+const update = (currentPassword,newPassword) => {     
+      return axios.put(API_URL + "updatepassword", {currentPassword,newPassword},    
       {
           headers:{'Content-Type': 'application/json',
-                    Authorization: `Bearer ${user}`,          
-      }})
-      // dispatch({type:'UPDATE_SUCCESS',payload:response})
- 
+                    Authorization: usertoken,          
+      }}) 
 };
 
 

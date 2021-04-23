@@ -14,8 +14,8 @@ import { useSelector, useDispatch } from "react-redux";
 function App() {
   const user=useSelector((state)=>state.auth)
   const[isLogin,setIsLogin]=useState();
-  console.log(user);
-  console.log(isLogin);
+  // console.log(user);
+  // console.log(isLogin);
   useEffect(()=>{
     setIsLogin(localStorage.getItem("user")||"")
   },[isLogin])

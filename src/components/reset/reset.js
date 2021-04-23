@@ -1,40 +1,34 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./reset.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { reset } from "../../actions/auth";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import Validation from "../validation";
 
 const Reset = (props) => {
+  useEffect(()=>{
+    alert("Sorry\n\n You can not reset your password\n\n Api call from here is not working!!!!!")
+  },[])
+  
   const dispatch = useDispatch();
-  const error = useSelector((state) => state.message);
-
   const [values, setValues] = useState({ email: "" });
-  const [loading, setLoading] = useState(false);
-
-  console.log(error);
-  const OnChange = (e) => {
+  const [error, setError] = useState({ email: "" });
+  
+  const handleChange = (e) => {
     setValues({ email: e.target.value });
   };
-  const onBlur = (e) => {
-    dispatch({ type: "SET_MESSAGE_EMAIL", payload: e.target.value });
-  };
+
   const BackToLogin = () => {
     props.history.push("./login");
   };
-  const SendData = () => {};
-  console.log(loading);
+
   const SendDataToBackend = () => {
-    for (const key in error) {
-      if (error[key] !== "") {
-        return;
-      }
-      console.log("OK");
+    if (error.email === "" || error.email) {
+      return;
+    } else {
       dispatch(reset(values.email))
-        .then(() => {
-          setLoading(true);
-        })
-        .catch(() => {
-          setLoading(false);
-        });
+        .then(() => {})
+        .catch(() => {});
     }
   };
   return (
@@ -52,27 +46,51 @@ const Reset = (props) => {
             Use this form to reset your password using the registered email
             address.
           </h4>
-          <div>
-            <label className="resetLabel">Enter Email</label>
-            <br />
-            <input
-              className="resetInp"
-              type="email"
-              name="email"
-              placeholder="Enter address"
-              onChange={OnChange}
-              onBlur={onBlur}
-              required
-              autoComplete="off"
-            />
-            <p className="is-danger">{error.message_email}</p>
-          </div>
-          <button
-            className="resetButton"
-            type="button"
-            onClick={SendDataToBackend}
-            onClickCapture={SendData}
-          ></button>
+          <Formik
+            initialValues={{ email: "" }}
+            validate={(values) => {
+              const errors = Validation(values);
+              setError({ email: errors.email });
+              return errors;
+            }}
+            onSubmit={(values, { setSubmitting }) => {
+              setTimeout(() => {
+                alert(JSON.stringify(values, null, 2));
+                setSubmitting(false);
+              }, 400);
+            }}
+          >
+            {({ isSubmitting }) => (
+              <Form>
+                <div className="inpts">
+                  <label className="resetLabel">Email Address</label>
+                  <br />
+                  <Field
+                    className="resetInp"
+                    type="email"
+                    name="email"
+                    placeholder="Enter address"
+                    onKeyUp={handleChange}
+                    required
+                    autoComplete="off"
+                  />
+                  <ErrorMessage
+                    className="is-danger"
+                    name="email"
+                    component="div"
+                  />
+                </div>
+                <div>
+                  <button
+                    className="resetButton"
+                    type="submit"
+                    disabled={isSubmitting}
+                    onClick={SendDataToBackend}
+                  ></button>
+                </div>
+              </Form>
+            )}
+          </Formik>
         </div>
       </div>
     </>

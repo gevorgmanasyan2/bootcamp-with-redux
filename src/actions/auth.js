@@ -5,6 +5,7 @@ import {
   LOGIN_FAIL,
   RESET_SUCCESS,
   RESET_FAIL,
+  UPDATE_START,
   UPDATE_SUCCESS,
   UPDATE_FAIL,
   LOGOUT,
@@ -92,38 +93,36 @@ export const reset = (email) => (dispatch) => {
   );
 };
 export const update = (currentPassword,newPassword) => (dispatch) => {
+  dispatch({
+    type: UPDATE_START,    
+  });
   return AuthService.update(currentPassword,newPassword).then(
     (response) => {
       console.log(response);
-      // dispatch({
-      //   type: UPDATE_SUCCESS,
-      // });
-
-      // dispatch({
-      //   type: SET_MESSAGE,
-      //   payload: response.data,
-      // });
-
+      
+      dispatch({
+        type: UPDATE_SUCCESS,
+      });
+      dispatch({
+        type: SET_MESSAGE,
+        payload: response.data.statusText,
+      });
       return Promise.resolve();
     },
-    (error) => {
-      console.log(error);
-      // const message =
-      //   (error.response &&
-      //     error.response.data &&
-      //     error.response.data.message) ||
-      //   error.message ||
-      //   error.toString();
-
-      // dispatch({
-      //   type: UPDATE_FAIL,
-      // });
-
-      // dispatch({
-      //   type: SET_MESSAGE,
-      //   payload: message,
-      // });
-
+    (error) => {     
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      dispatch({
+        type: UPDATE_FAIL,
+      });
+      dispatch({
+        type: SET_MESSAGE,
+        payload: message,
+      });
       return Promise.reject();
     }
   );

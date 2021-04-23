@@ -5,6 +5,7 @@ import {
     LOGIN_FAIL,   
     RESET_SUCCESS,
     RESET_FAIL,
+    UPDATE_START,
     UPDATE_SUCCESS,
     UPDATE_FAIL,
     LOGOUT
@@ -53,15 +54,18 @@ import {
           ...state,
           isLoggedIn: false,
         };
+        case UPDATE_START:
+          return {
+            ...state, 
+            user:payload           
+          };
         case UPDATE_SUCCESS:
           return {
-            ...state,
-            // isLoggedIn: false,
+            ...state,            
           };
           case UPDATE_FAIL:
           return {
-            ...state,
-            // isLoggedIn: false,
+            ...state,            
           };
       case LOGOUT:
         return {
