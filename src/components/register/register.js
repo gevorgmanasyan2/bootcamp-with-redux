@@ -119,25 +119,29 @@ const regMessage=useSelector(state=>state.auth.registeredUser);
            <div className="regInputs">
            <label >Email Address</label>
               <br />
-           <Field  className="inp" type="text" name="name" placeholder="Enter Full Name" OnChange={OnChange} />
+           <Field  className="inp" type="text" name="name" placeholder="Enter Full Name"
+           required autoComplete="off" OnChange={OnChange} />
            <ErrorMessage className="is-danger" name="name" component="div" />
            </div>
            <div className="regInputs">
            <label >Email Address</label>
               <br />
-           <Field  className="inp" type="email" name="email" placeholder="Enter Email" OnChange={OnChange} />
+           <Field  className="inp" type="email" name="email" placeholder="Enter Email"
+           required autoComplete="off" OnChange={OnChange} />
            <ErrorMessage className="is-danger" name="email" component="div" />
            </div>
            <div className="regInputs">
            <label>Password</label>
               <br />
-           <Field className="inp" type="password" name="password" placeholder="Enter Password" OnChange={OnChange} />
+           <Field className="inp" type="password" name="password" placeholder="Enter Password"
+           required autoComplete="off" OnChange={OnChange} />
            <ErrorMessage className="is-danger" name="password" component="div" />
            </div>
            <div className="regInputs">
            <label>Confirm Password</label>
               <br />
-           <Field className="inp" type="password" name="confirm" placeholder="Confirm password" OnChange={OnChange} />
+           <Field className="inp" type="password" name="confirm" placeholder="Confirm password"
+           required autoComplete="off" OnChange={OnChange} />
            <ErrorMessage className="is-danger" name="confirm" component="div" />
            </div>
            <div className="regRadio">
@@ -167,149 +171,7 @@ const regMessage=useSelector(state=>state.auth.registeredUser);
        )}
      </Formik>
      
-     {/* <div className="regRadio">
-            <label>User Role</label>
-            <br />
-            <input
-              type="radio"
-              id="userrole"
-              name="role"
-              value="user"
-              checked={radioCheck === "user"}
-              onChange={OnChange}
-              onBlur={onBlur}
-            />
-            <p>Regular User (Browse, Write reviews, etc)</p>
-            <p className="is-danger">{error.message_checked}</p>
-            <br />
-            <input
-              type="radio"
-              id="publisherrole"
-              name="role"
-              value="publisher"
-              checked={radioCheck === "publisher"}
-              onChange={OnChange}
-              onBlur={onBlur}
-            />
-            <p>Bootcamp Publisher</p>
-            <p className="is-danger">{error.message_checked}</p>
-          </div>
-          <div className="validationError">
-            <p>
-              * You must be affiliated with the bootcamp in some way in order to
-              add it to DevCamper.
-            </p>
-          </div>
-          <div>
-            <button
-              className="regButton"
-              type="button"
-              onClick={SendDataToBackend}
-            >
-              Register
-            </button> */}
-          {/* <div className="regInputs">
-            <label>Name</label>
-            <br />
-            <input
-              type="text"
-              name="name"
-              placeholder="Enter Full Name"
-              value={values.name || ""}
-              onChange={OnChange}
-              onBlur={onBlur}
-              required
-              autoComplete="off"
-            />
-            <p className="is-danger">{error.message_name}</p>
-          </div>
-          <div className="regInputs">
-            <label>Email Address</label>
-            <br />
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter Email"
-              value={values.email || ""}
-              onChange={OnChange}
-              onBlur={onBlur}
-              required
-              autoComplete="off"
-            />
-            <p className="is-danger">{error.message_email}</p>
-          </div>
-          <div className="regInputs">
-            <label>Password</label>
-            <br />
-            <input
-              type="password"
-              name="password"
-              placeholder="Enter Password"
-              value={values.password || ""}
-              onChange={OnChange}
-              onBlur={onBlur}
-              required
-              autoComplete="off"
-            />
-            <p className="is-danger">{error.message_password}</p>
-          </div>
-          <div className="regInputs">
-            <label>Confirm Password</label>
-            <br />
-            <input
-              type="password"
-              name="confirm"
-              placeholder="Confirm Password"
-              value={values.confirm || ""}
-              onChange={OnChange}
-              onBlur={onBlur}
-              required
-              autoComplete="off"
-            />
-            <p className="is-danger">{error.message_confirm}</p>
-          </div>
-          <div className="regRadio">
-            <label>User Role</label>
-            <br />
-            <input
-              type="radio"
-              id="userrole"
-              name="role"
-              value="user"
-              checked={radioCheck === "user"}
-              onChange={OnChange}
-              onBlur={onBlur}
-            />
-            <p>Regular User (Browse, Write reviews, etc)</p>
-            <p className="is-danger">{error.message_checked}</p>
-            <br />
-            <input
-              type="radio"
-              id="publisherrole"
-              name="role"
-              value="publisher"
-              checked={radioCheck === "publisher"}
-              onChange={OnChange}
-              onBlur={onBlur}
-            />
-            <p>Bootcamp Publisher</p>
-            <p className="is-danger">{error.message_checked}</p>
-          </div>
-          <div className="validationError">
-            <p>
-              * You must be affiliated with the bootcamp in some way in order to
-              add it to DevCamper.
-            </p>
-          </div>
-          <div>
-            <button
-              className="regButton"
-              type="button"
-              onClick={SendDataToBackend}
-            >
-              Register
-            </button>
-          </div> */}
+    
         </div>
       </div>
     </>

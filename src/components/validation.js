@@ -19,6 +19,22 @@ export default function validate(values) {
     else if(values.confirm!==values.password){
       errors.confirm="password and confirm fields must be the same"
     }
+    if (!values.currentPassword) {
+      errors.currentPassword = 'Password is required';
+    } else if (values.currentPassword.length < 6) {
+      errors.currentPassword = 'Password must be 6 or more characters';
+    }
+    if (!values.newPassword) {
+      errors.newPassword = 'Password is required';
+    } else if (values.newPassword.length < 6) {
+      errors.newPassword = 'Password must be 6 or more characters';
+    }
+    if(!values.confirmNewPassword){
+      errors.confirmNewPassword='The field must be filled in';     
+    }
+    else if(values.confirmNewPassword!==values.newPassword){
+      errors.confirmNewPassword="password and confirm fields must be the same"
+    }
     if(!values.role){
       errors.role='The button must be checked';     
     }

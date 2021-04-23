@@ -2,6 +2,8 @@ import React, {useState,useContext, useEffect} from 'react';
 import './update.css';
 import {useSelector,useDispatch} from 'react-redux';
 import {update,updatePassword} from '../../actions/auth';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import Validation from '../validation';
 
 
 
@@ -68,28 +70,55 @@ const Update=(props)=>{
        <div className="update">
           <div className="updateForm">
              <h1 className="updateHeader">Update Password</h1>
-             <div className="updateItem">
-                 <label className="updateLabel">Current Password</label><br/>
-                 <input className="updateInp" type="password" name="currentPassword" placeholder="Current Password"
-                 onChange={OnChange} onBlur={OnBlur} value={values.currentPassword || ''} required autoComplete="off" />
-                <p className="is-danger">{error.message_oldpassword}</p>
-             </div>
-             <div className="updateItem">
-                 <label className="updateLabel">New Password</label><br/>
-                 <input className="updateInp" type="password" name="newPassword" placeholder="New Password"
-                 onChange={OnChange} onBlur={OnBlur} value={values.newPassword || ''} required autoComplete="off" />
-                 <p className="is-danger">{error.message_password}</p>
-             </div>
-             <div className="updateItem">
-                 <label className="updateLabel">Confirm New Password</label><br/>
-                 <input className="updateInp" type="password" name="confirmNewPassword" placeholder="Confirm New Password"
-                 onChange={OnChange} onBlur={OnBlur} value={values.confirmNewPassword || ''} required autoComplete="off" />
-                 <p className="is-danger">{error.message_confirm}</p>
-             </div>
-             <div className="updateBtn">
-                 <button className="updateBtnInp" type="button"
-                 onClick={SendDataToBackend} >Update Password</button>
-             </div>
+             <Formik
+       initialValues={{ currentPassword: '', newPassword: '',confirmNewPassword:'' }}
+       validate={values => {    
+           console.log(values);   
+        const errors=Validation(values) 
+        console.log(errors);       
+         return errors;
+       }}
+       onSubmit={(values, { setSubmitting }) => {
+         setTimeout(() => {
+           alert(JSON.stringify(values, null, 2));
+           setSubmitting(false);
+         }, 400);
+       }}
+     >
+       {({ isSubmitting }) => (
+         <Form>
+           <div className="updateItem">
+           <label className="updateLabel">Current Password</label>
+              <br />
+           <Field  className="updateInp" type="password" name="currentPassword" placeholder="Current Password"
+           OnChange={OnChange} required autoComplete="off" />
+           <ErrorMessage className="is-danger" name="currentPassword" component="div" />
+           </div>
+           <div className="updateItem">
+           <label className="updateLabel">New Password</label>
+              <br />
+              <Field  className="updateInp" type="password" name="newPassword" placeholder="Current Password"
+           OnChange={OnChange} required autoComplete="off" />
+           <ErrorMessage className="is-danger" name="newPassword" component="div" />
+           </div>
+           <div className="updateItem">
+           <label className="updateLabel">Confirm New Password</label>
+              <br />
+              <Field  className="updateInp" type="password" name="confirmNewPassword" placeholder="Current Password"
+           OnChange={OnChange} required autoComplete="off" />
+           <ErrorMessage className="is-danger" name="confirmNewPassword" component="div" />
+           </div>
+           <div className="updateBtn">
+           <button className="updateBtnInp" type="submit" disabled={isSubmitting} onClick={SendDataToBackend}>
+           Update Password
+           </button>
+           </div>
+           
+         </Form>
+       )}
+     </Formik>
+
+            
           </div>
        </div>
 

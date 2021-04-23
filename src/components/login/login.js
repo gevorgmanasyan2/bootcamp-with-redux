@@ -10,18 +10,21 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Validation from '../validation';
 
 const Login = (props) => {
+
   const isLogin = AuthHeader();
-  console.log(isLogin);
+  
   const dispatch = useDispatch();
-  const { isLoggedIn } = useSelector((state) => state.auth);
-  console.log(isLoggedIn);
-  const user=useSelector((state)=>state.auth)
-  const error = useSelector((state) => state.message);
+  // const { isLoggedIn } = useSelector((state) => state.auth);
+  // console.log(isLoggedIn);
+  // const user=useSelector((state)=>state.auth)
+  // const error = useSelector((state) => state.message);
   const [values, setValues] = useState({ email: "", password: "" });
-  const [loading, setLoading] = useState(false);
-  console.log(values.password);
-console.log(user);
-  const OnChange = (e) => {
+  // const [loading, setLoading] = useState(false);
+  // console.log(values.password);
+// console.log(user);
+  const handleChange = (e) => {
+    console.log(e.target.name);
+    console.log(e.target.value);
     switch (e.target.name) {
       case "email":
         setValues({ ...values, email: e.target.value });
@@ -34,39 +37,29 @@ console.log(user);
         break;
     }
   };
-  const onBlur = (e) => {
-    switch (e.target.name) {
-      case "email":
-        dispatch({ type: "SET_MESSAGE_EMAIL", payload: e.target.value });
-        break;
-      case "password":
-        dispatch({ type: "SET_MESSAGE_LOGIN_PASSWORD", payload: e.target.value });
-        break;
-
-      default:
-        break;
-    }
-  };
-
-  const SendData = (event) => {};
+  
+  
   const Reset = () => {
     props.history.push('./reset');
   };
-  console.log(error);
-  console.log(loading);
+  // console.log(error);
+  // console.log(loading);
   const SendDataToBackend = () => {
-    for (const key in error) {
-      if (error[key] !== "") {
-        return;
-      }     
-    }
+    // for (const key in error) {
+    //   if (error[key] !== "") {
+    //     return;
+    //   }     
+    // }
     console.log("OK");
-    dispatch(login(values.email, values.password))
+    const{email,password}=values;
+    console.log(email,password);
+    console.log(values);
+    dispatch(login(email,password))
       .then(() => {
-        setLoading(true);
+        // setLoading(true);
       })
       .catch(() => {
-        setLoading(false);
+        // setLoading(false);
       });
   };
 
@@ -101,73 +94,34 @@ console.log(user);
            alert(JSON.stringify(values, null, 2));
            setSubmitting(false);
          }, 400);
-       }}
+       }}      
      >
-       {({ isSubmitting }) => (
+       {({ isSubmitting}) => (
          <Form>
            <div className="inpts">
            <label className="fLabel">Email Address</label>
               <br />
-           <Field  className="inp" type="email" name="email" />
+              <Field  className="inp" type="email" name="email" placeholder="Current Password"
+           onKeyUp={handleChange} required autoComplete="off" />
            <ErrorMessage className="is-danger" name="email" component="div" />
            </div>
            <div className="inpts">
            <label className="fLabel">Password</label>
               <br />
-           <Field className="inp" type="password" name="password" />
+              <Field  className="inp" type="password" name="password" placeholder="Current Password"
+           onKeyUp={handleChange} required autoComplete="off" />
            <ErrorMessage className="is-danger" name="password" component="div" />
            </div>
            <div className="inpButton">
-           <button className="formBtn" type="submit" disabled={isSubmitting}>
-             Submit
+           <button className="formBtn" type="submit" disabled={isSubmitting} onClick={SendDataToBackend}>
+             Login
            </button>
            </div>
            
          </Form>
        )}
      </Formik>
-            {/* <div className="inpts">
-              <label className="fLabel">Email Address</label>
-              <br />
-              <input
-                className="inp"
-                type="email"
-                name="email"
-                onChange={OnChange}
-                onBlur={onBlur}
-                placeholder="Enter Email"
-                autoComplete="off"
-                value={values.email || ""}
-                required
-              />
-              <p className="is-danger">{error.message_email}</p>
-            </div>
-            <div className="inpts">
-              <label className="fLabel">Password</label>
-              <br />
-              <input
-                className="inp"
-                type="password"
-                name="password"
-                onChange={OnChange}
-                onBlur={onBlur}
-                placeholder="Enter Password"
-                autoComplete="off"
-                value={values.password || ""}
-                required
-              />
-              <p className="is-danger">{error.message_password}</p>
-            </div>
-            <div className="inpButton">
-              <button
-                className="formBtn"
-                type="submit"
-                onClick={SendDataToBackend}
-                onClickCapture={SendData}
-              >
-                Login
-              </button>
-            </div> */}
+            
 
             <div className="formFooter">
               <div>
