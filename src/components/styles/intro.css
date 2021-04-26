@@ -1,0 +1,123 @@
+.showCase1 {
+  background-image: url(../../public/images/94e449903d81b7807265fac69a89d602.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 920px;
+}
+
+.find {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+  margin: auto;
+}
+
+.find h1 {
+  font-family: Roboto;
+  font-weight: 400;
+  line-height: 67px;
+  text-align: center;
+  color: #ffffff;
+  margin: 0;
+}
+
+.find h3 {
+  font-family: Roboto;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 30px;
+  text-align: center;
+  color: #ffffff;
+  margin: 0 5px;
+}
+
+.find .caption {
+  margin-top: 300px;
+}
+
+.forms {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.miles {
+  width: 540px;
+  height: 38px;
+  border: 1px solid #ced4da;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-right: 30px;
+  padding-left: 20px;
+}
+
+@media screen and (max-width: 1150px) {
+  .introTexth1 {
+    font-size: 40px;
+  }
+  .submit {
+    width: 416px;
+  }
+  .miles {
+    width: 193px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .find h1 {
+    line-height: normal;
+    font-size: 32px;
+  }
+  .find h3 {
+    line-height: normal;
+  }
+  .miles {
+    margin-right: 10px;
+    width: 125px;
+  }
+  .zipcode {
+    width: 125px;
+  }
+  .submit {
+    width: 260px;
+  }
+}
+
+@media screen and (min-width: 1150px) {
+  .submit {
+    width: 1110px;
+  }
+  .zipcode {
+    width: 540px;
+  }
+}
+
+.zipcode {
+  height: 38px;
+  border: 1px solid #ced4da;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-left: 20px;
+}
+
+.submit {
+  height: 38px;
+  margin: auto;
+  background: #e05433;
+  border: 1px solid #e05433;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-align: center;
+  color: #ffffff;
+}
+/*# sourceMappingURL=intro.css.map */

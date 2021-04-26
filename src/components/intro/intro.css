@@ -1,4 +1,4 @@
-  .showCase1 {    
+  /* .showCase1 {    
     background-image: url(../../public/images/94e449903d81b7807265fac69a89d602.jpg);
     background-position: center;
     background-repeat: no-repeat;
@@ -69,7 +69,7 @@
     border: 1px solid #ced4da;
     box-sizing: border-box;    
     padding-left: 20px;
-  }
+  }  */
   .submit { 
     height: 38px;
     margin: auto;
@@ -79,4 +79,4 @@
     text-align: center;
     color: #ffffff;
   }
-  
+ 

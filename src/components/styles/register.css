@@ -1,0 +1,158 @@
+.register {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.registerForm {
+  width: 540px;
+  padding: 0 45px 65px 45px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 0px;
+  margin-top: 40px;
+}
+
+.registerHeader {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-top: 40px;
+}
+
+.regHead {
+  width: 158px;
+  color: #212529;
+}
+
+.regHead h1 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  margin: 0 0 0 20px;
+  font-size: 40px;
+  line-height: 48px;
+}
+
+.regText {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #212529;
+}
+
+.validationError {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #dc3545;
+}
+
+.regButton {
+  width: 450px;
+  height: 38px;
+  background: #e05433;
+  border: 1px solid #e05433;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 0px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.regButton input {
+  background: #e05433;
+  color: #ffffff;
+  border: none;
+  margin-top: 9px;
+}
+
+.regRadio p {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  display: inline;
+  font-size: 16px;
+  line-height: 24px;
+  color: #212529;
+}
+
+.regInputs label {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  color: #212529;
+  margin: 10px 0;
+}
+
+.regInputs input {
+  width: 450px;
+  height: 38px;
+  left: 727px;
+  top: 301px;
+  line-height: 24px;
+  font-size: 15px;
+  background: #ffffff;
+  border: 1px solid #ced4da;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 0px;
+  padding-left: 10px;
+  margin: 10px 0 2px 0;
+}
+
+.regRadio {
+  width: 450px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 0px;
+  padding: 20px;
+  margin: 10px 0;
+}
+
+.is-danger {
+  color: #e05433;
+  margin-top: 0;
+}
+
+@media screen and (max-width: 670px) {
+  .registerForm {
+    width: 250px;
+    padding: 0 20px 65px 20px;
+  }
+  .regInputs input, .regRadio, .regButton {
+    width: 210px;
+  }
+  .regText {
+    line-height: normal;
+  }
+  .validationError {
+    line-height: normal;
+    font-size: 14px;
+  }
+}
+/*# sourceMappingURL=register.css.map */

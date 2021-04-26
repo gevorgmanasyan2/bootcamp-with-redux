@@ -1,0 +1,158 @@
+.loginForm {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.logForn {
+  width: 540px;
+  margin-top: 104px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 0px;
+  padding: 45px 45px 60px 45px;
+}
+
+.loginHeader {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.loginLog {
+  background: #ffffff;
+  -webkit-transform: matrix(1, 0, 0, -1, 0, 0);
+          transform: matrix(1, 0, 0, -1, 0, 0);
+  margin-right: 18px;
+}
+
+.logImg1 {
+  margin-bottom: 7px;
+  margin-right: -10px;
+}
+
+.loginHeader h1 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0em;
+  text-align: left;
+  font-size: 40px;
+  line-height: 48px;
+  color: #212529;
+  margin: 0;
+}
+
+.fLabel {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0em;
+  text-align: left;
+  font-size: 16px;
+  line-height: 24px;
+  color: #212529;
+}
+
+.inp {
+  width: 450px;
+  height: 38px;
+  margin-top: 5px;
+  background: #ffffff;
+  border: 1px solid #ced4da;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 0px;
+}
+
+.formBtn {
+  width: 450px;
+  height: 38px;
+  background: #e05433;
+  border: 1px solid #e05433;
+  border-radius: 0px;
+  color: #ffffff;
+  font-family: Roboto;
+  font-size: 16px;
+}
+
+.formFooter {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  width: 240px;
+  margin: 5px;
+}
+
+.formFooter h5 {
+  font-family: Roboto;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #212529;
+  margin: 0;
+  cursor: pointer;
+}
+
+.inpButton {
+  margin: 15px 0;
+}
+
+.inpts {
+  margin: 15px 0;
+}
+
+.formText h5 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0em;
+  text-align: left;
+  margin: 10px 0;
+  font-size: 18px;
+  line-height: 24px;
+  color: #212529;
+}
+
+.is-danger {
+  color: #e05433;
+}
+
+@media screen and (max-width: 560px) {
+  .logForn {
+    width: 250px;
+    padding: 45px 20px 60px 20px;
+    margin-top: 80px;
+  }
+  .inp, .formBtn {
+    width: 210px;
+  }
+  .formFooter {
+    width: 200px;
+  }
+  .formFooter h5 {
+    line-height: normal;
+  }
+  .formText h5 {
+    font-size: 16px;
+    line-height: normal;
+  }
+}
+/*# sourceMappingURL=login.css.map */

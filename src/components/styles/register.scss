@@ -1,0 +1,119 @@
+@import "./mixins";
+@import "./variables";
+
+
+.register {
+    @include CenteredGrid(auto)    
+  }
+  .registerForm {
+    width: 540px;
+    padding: 0 45px 65px 45px;
+    background: $textColor;
+    border: $darkbuttonBorder;
+    box-sizing: border-box;
+    border-radius: 0px;
+    margin-top: 40px;
+  }
+  .registerHeader {
+    @include displayGrid(auto auto);    
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 40px;
+  }
+  .regHead {
+    width: 158px;
+    color:$formTextColor;
+  }
+  .regHead h1 {
+    @include validStyle;
+    margin: 0 0 0 20px;    
+    font-size: 40px;
+    line-height: 48px;
+  }
+  .regText {
+    @include validStyle;    
+    font-size: 16px;
+    line-height: 24px;  
+    color:$formTextColor;
+  }
+  .validationError {
+    @include validStyle;    
+    font-size: 16px;
+    line-height: 24px;  
+    color: #dc3545;
+  }
+  .regButton {
+    width: 450px;
+    height: 38px;
+    background: $orangeColor;
+    border: $orangebuttonBorder;
+    box-sizing: border-box;
+    border-radius: 0px;
+    text-align: center;
+    color: $textColor;
+  }
+  .regButton input {
+    background:$orangeColor;
+    color: $textColor;
+    border: none;
+    margin-top: 9px;
+  }
+  .regRadio p {
+      @include validStyle;
+    display: inline;    
+    font-size: 16px;
+    line-height: 24px;  
+    color:$formTextColor;
+  }
+  .regInputs label {
+    @include validStyle;    
+    font-size: 18px;
+    line-height: 24px;  
+    color:$formTextColor;
+    margin: 10px 0;
+  }
+  .regInputs input {
+    width: 450px;
+    height: 38px;
+    left: 727px;
+    top: 301px;
+    line-height: 24px;
+    font-size: 15px;
+    background: $textColor;
+    border: $whitebuttonBorder;
+    box-sizing: border-box;
+    border-radius: 0px;
+    padding-left: 10px;
+    margin: 10px 0 2px 0;
+  }
+  .regRadio {
+    width: 450px;
+    background: $textColor;
+    border: $darkbuttonBorder;
+    box-sizing: border-box;
+    border-radius: 0px;
+    padding: 20px;
+    margin: 10px 0;
+  }
+  .is-danger{
+    color:$orangeColor;
+    margin-top: 0;
+  }
+  @media screen and (max-width: 670px) { 
+    .registerForm{
+        width: 250px;
+        padding: 0 20px 65px 20px;
+    }
+    .regInputs input,.regRadio,.regButton{
+        width: 210px;
+    }
+    .regText{
+        line-height: normal;
+    }
+    .validationError{
+        line-height: normal;
+        font-size: 14px;
+    }
+   }
+  
+  

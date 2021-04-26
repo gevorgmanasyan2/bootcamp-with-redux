@@ -142,7 +142,7 @@
     width: 445px;
     padding: 0 20px;
   }
-  .next {
+  .next,.numbers {
     border: 1px solid #dee2e6;
     border-radius: 0px;
     font-family: Roboto;
@@ -194,4 +194,5 @@
       margin-right: 20px;
     }
   }
+  
   

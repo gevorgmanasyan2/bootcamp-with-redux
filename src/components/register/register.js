@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import regIcon from "../../public/images/regIcon.png";
-import "./register.css";
+import '../../components/styles/register.css';
 import { useDispatch } from "react-redux";
 import { registerToken } from "../../actions/auth";
 import { Formik, Form, Field, ErrorMessage } from "formik";
