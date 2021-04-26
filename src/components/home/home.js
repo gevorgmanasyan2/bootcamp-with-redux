@@ -8,7 +8,33 @@ import {useSelector,useDispatch} from 'react-redux';
 const Home=()=>{
     const dispatch=useDispatch();
     const[data,setData]=useState();   
-   console.log(data);
+  //  console.log(data);
+  const x=[
+    {name:"gevorg",address:"hhhhhhhhhhh",careers:"hhhhhhhhhhhhh"},
+    {name:"gevorg",address:"hhhhhhhhhhh",careers:"hhhhhhhhhhhhh"},
+    {name:"gevorg",address:"hhhhhhhhhhh",careers:"hhhhhhhhhhhhh"},
+    {name:"gevorg",address:"hhhhhhhhhhh",careers:"hhhhhhhhhhhhh"},
+    {name:"Mery",address:"hhhhhhhhhhh",careers:"hhhhhhhhhhhhh"},
+    {name:"Mery",address:"hhhhhhhhhhh",careers:"hhhhhhhhhhhhh"},
+    {name:"Mery",address:"hhhhhhhhhhh",careers:"hhhhhhhhhhhhh"},
+    {name:"Mery",address:"hhhhhhhhhhh",careers:"hhhhhhhhhhhhh"},
+    {name:"Miko",address:"hhhhhhhhhhh",careers:"hhhhhhhhhhhhh"},
+    {name:"Miko",address:"hhhhhhhhhhh",careers:"hhhhhhhhhhhhh"},
+    {name:"Miko",address:"hhhhhhhhhhh",careers:"hhhhhhhhhhhhh"},
+    {name:"Miko",address:"hhhhhhhhhhh",careers:"hhhhhhhhhhhhh"},
+    {name:"vaxo",address:"hhhhhhhhhhh",careers:"hhhhhhhhhhhhh"},
+    {name:"vaxo",address:"hhhhhhhhhhh",careers:"hhhhhhhhhhhhh"},
+    {name:"vaxo",address:"hhhhhhhhhhh",careers:"hhhhhhhhhhhhh"},
+    {name:"vaxo",address:"hhhhhhhhhhh",careers:"hhhhhhhhhhhhh"},
+    {name:"samo",address:"hhhhhhhhhhh",careers:"hhhhhhhhhhhhh"},
+    {name:"samo",address:"hhhhhhhhhhh",careers:"hhhhhhhhhhhhh"},
+    {name:"samo",address:"hhhhhhhhhhh",careers:"hhhhhhhhhhhhh"},
+    {name:"samo",address:"hhhhhhhhhhh",careers:"hhhhhhhhhhhhh"},
+    {name:"samo",address:"hhhhhhhhhhh",careers:"hhhhhhhhhhhhh"},
+
+  ]
+  
+  
 
     useEffect(() => {
       getBootcamp().then(
@@ -25,6 +51,48 @@ const Home=()=>{
           }
         );
       }, []);
+      const paginate = function (array, index, size) {
+        // console.log(array.length);       
+        index = Math.abs(parseInt(index));
+        // index=(index*4)>=(array.length+4)?index-1:index;
+        index = index > 0 ? index - 1 : index;
+        size = parseInt(size);
+        size = size < 1 ? 1 : size;
+      
+        // filter
+        return [...(array.filter((value, n) => {
+            return (n >= (index * size)) && (n < ((index+1) * size))
+        }))]
+    }
+    const[page,setPage]=useState(1)
+    const[currentpage,setCuurentpage]=useState(1);
+    console.log(currentpage);
+
+    function GetPageinValue(e){
+      let index=e.target.innerHTML;       
+       if(index==="Previous"){
+         if(parseInt(currentpage)>1){
+           index=parseInt(currentpage)-1;
+         }else{
+          index=1;
+         }
+         
+       }
+       if(index==="Next"){
+         console.log(x.length);
+         if(parseInt((currentpage+1)*4)<=(x.length+3)){
+          index=parseInt(currentpage)+1;
+         }else{
+          index=parseInt(currentpage);
+         }
+         
+       }
+       setCuurentpage(index);
+         console.log(index);       
+       setPage(index)       
+    }
+    console.log(page);
+    
     // axios.get(`https://devcamp-api-node.herokuapp.com/api/v1/bootcamps`)
     //         .then(res => {               
     //             if(data===undefined){
@@ -63,8 +131,9 @@ const Home=()=>{
   
     <div className="mainGrid">
 
-    {(data) && data.map((i,k)=>
-<div key={k} className="items">
+    {/* {(data) && data.map((i,k)=> */}
+    {(x) && paginate(x.map((i,k)=>
+  <div key={k} className="items">
     <div>
         <img src={image1} alt="pic" />
     </div>
@@ -76,17 +145,18 @@ const Home=()=>{
         <p className="city">{i.address}</p>
         <h2 className="skil">{i.careers}&nbsp</h2>
     </div>
-</div>
-  )}
+   </div>
+    ), page, 4)}
+
 
 <div className="items">
     <div className="pagin">
-    <a className='next' href="#">Previous</a>
-    <a className='next' href="#">1</a>
-    <a className="next" href="#">2</a>
-    <a className='next' href="#">3</a>
-    <a className='next' href="#">4</a>
-    <a className='next' href="#">Next</a>
+    <a className='next' href="#" onClick={GetPageinValue}>Previous</a>
+    <a className='next' href="#" onClick={GetPageinValue}>1</a>
+    <a className="next" href="#" onClick={GetPageinValue}>2</a>
+    <a className='next' href="#" onClick={GetPageinValue}>3</a>
+    <a className='next' href="#" onClick={GetPageinValue}>4</a>
+    <a className='next' href="#" onClick={GetPageinValue}>Next</a>
     </div>
 
 </div>

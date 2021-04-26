@@ -5,13 +5,12 @@ import login2 from "../../public/images/arrowLog2.png";
 import Home from "../home/home";
 import AuthHeader from "../../services/auth-header";
 import { useDispatch } from "react-redux";
-import { login } from "../../actions/auth";
+import { loginToken } from "../../actions/auth";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import Validation from "../validation";
 
 const Login = (props) => {
-  const isLogin = AuthHeader();
-  console.log(isLogin);
+  const isLogin = AuthHeader(); 
   const dispatch = useDispatch();
   const [values, setValues] = useState({ email: "", password: "" });
   const [error, setError] = useState({ email: "", password: "" });
@@ -27,12 +26,13 @@ const Login = (props) => {
 
   const SendDataToBackend = (errors) => {
     const { email, password } = values;
+    const userInputs={ email, password };
     const emailErr = error.email;
     const passwordErr = error.password;
     if (emailErr || passwordErr) {
       return;
     } else {     
-      dispatch(login(email, password))
+      dispatch(loginToken(userInputs))
         .then(() => {})
         .catch(() => {});
     }

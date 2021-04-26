@@ -6,8 +6,7 @@ body {
     display: grid;
     grid-template-columns: auto auto;
     background-color: #e05433;
-    height: 56px;
-    margin: 0;
+    height: 56px;    
     align-items: flex-start;
   }
   .dev {
@@ -21,15 +20,7 @@ body {
     font-family: Roboto;
     font-weight: normal;  
     color: #ffffff;
-  }
-  .devIcon img {
-    width: 36px;
-    height: 29px;
-    left: 0%;
-    right: 0%;
-    top: 0%;
-    bottom: 0%;
-  }
+  }  
   .navLink {
     display: grid;
     grid-template-columns: auto auto auto auto auto auto;
@@ -44,125 +35,16 @@ body {
   }
   .navLink h3 {
     font-family: Roboto;
-    font-size: 16px;
-    font-style: normal;
+    font-size: 16px;    
     font-weight: 400;
-    line-height: 24px;
-    letter-spacing: 0em;
-    text-align: left;
-    height: 24px;
-    top: 16px;
+    line-height: 24px;    
     color: rgba(255, 255, 255, 0.5);
   }
-  .loginImg1 {
-    top: 0;
+  .loginImg1 {    
     margin-bottom: 4px;
     margin-right: -5px;
-  }
+  }  
   
-  .showCase1 {
-    background-image: url(../../public/images/94e449903d81b7807265fac69a89d602.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 920px; 
-  }
-  .find {
-    display: grid;
-    grid-template-columns: auto;
-    margin: auto;
-  }
-  .find > div {
-    justify-content: center;
-  }
-  .caption {
-    margin-top: 380px;
-  }
-  .introTexth1 {
-    height: 68px;
-    font-family: Roboto;
-    font-size: 53px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 67px;
-    letter-spacing: 0em;
-    text-align: center;
-    color: #ffffff;
-    margin: 0;
-  }
-  .introTexth3 {
-    height: 30px;
-    font-family: Roboto;
-    font-size: 19px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 30px;
-    letter-spacing: 0em;
-    text-align: center;
-    color: #ffffff;
-    margin: 0;
-  }
-  .forms {
-    display: grid;
-    grid-template-columns: auto auto;
-    justify-content: center;  
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .inps {
-    justify-content: center;
-  }
-  .miles {
-    width: 540px;
-    height: 38px;
-    justify-content: right;
-    background: #ffffff;
-    border: 1px solid #ced4da;
-    box-sizing: border-box;
-    border-radius: 0px;
-    margin-right: 30px;
-    padding-left: 20px;
-  }
-  @media screen and (max-width: 1150px) { 
-    .introTexth1{
-      font-size: 40px;
-    } 
-    .submit {
-      width: 416px;
-     } 
-    .miles {
-      width: 193px;
-     }   
-  }
-  @media screen and (min-width: 1150px) { 
-    .submit {
-      width: 1110px;
-     }
-    .zipcode {
-      width: 540px;
-     }  
-  }
-  
-  .zipcode {
-    justify-content: left; 
-    height: 38px;
-    background: #ffffff;
-    border: 1px solid #ced4da;
-    box-sizing: border-box;
-    border-radius: 0px;
-    padding-left: 20px;
-  }
-  .submit { 
-    height: 38px;
-    margin: auto;
-    background: #e05433;
-    border: 1px solid #e05433;
-    box-sizing: border-box;
-    border-radius: 0px;
-    text-align: center;
-    color: #ffffff;
-  }
   .headIcon{
     padding-left: 2px;
   }

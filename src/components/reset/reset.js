@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
 import "./reset.css";
 import { useDispatch } from "react-redux";
-import { reset } from "../../actions/auth";
+import { resetToken } from "../../actions/auth";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import Validation from "../validation";
 
@@ -26,7 +26,7 @@ const Reset = (props) => {
     if (error.email === "" || error.email) {
       return;
     } else {
-      dispatch(reset(values.email))
+      dispatch(resetToken(values.email))
         .then(() => {})
         .catch(() => {});
     }

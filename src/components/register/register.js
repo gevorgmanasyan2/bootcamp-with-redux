@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import regIcon from "../../public/images/regIcon.png";
 import "./register.css";
 import { useDispatch } from "react-redux";
-import { register } from "../../actions/auth";
+import { registerToken } from "../../actions/auth";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import Validation from "../validation";
 
@@ -33,11 +33,13 @@ const Register = (props) => {
 
   const SendDataToBackend = (e) => {
     const { name, email, password, role } = values;
+    const userInputs={ name, email, password, role };   
+    console.log(userInputs); 
     const { errname, erremail, errpassword, errconfirm } = error;
     if (errname === "" || erremail || errpassword || errconfirm) {
       return;
     } else {
-      dispatch(register(name, email, password, role))
+      dispatch(registerToken(userInputs))
         .then(() => {
           props.history.push("./login");
         })
@@ -91,7 +93,7 @@ const Register = (props) => {
             {({ isSubmitting }) => (
               <Form>
                 <div className="regInputs">
-                  <label>Email Address</label>
+                  <label>Name</label>
                   <br />
                   <Field
                     className="inp"
@@ -186,12 +188,7 @@ const Register = (props) => {
                     onBlur={onBlur}
                     onKeyUp={handleChange}
                   />
-                  <p>Bootcamp Publisher</p>
-                  <ErrorMessage
-                    className="is-danger"
-                    name="role"
-                    component="div"
-                  />
+                  <p>Bootcamp Publisher</p>                  
                 </div>
                 <div className="validationError">
                   <p>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./update.css";
 import { useDispatch } from "react-redux";
-import { update } from "../../actions/auth";
+import { updateToken } from "../../actions/auth";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import Validation from "../validation";
 
@@ -25,11 +25,12 @@ const Update = (props) => {
 
   const SendDataToBackend = () => {
     const { currentPassword, newPassword } = values;
+    const userInputs={ currentPassword, newPassword };
     const { currentPasswordERR, newPasswordERR, confirmNewPasswordERR } = error;
     if (currentPasswordERR === "" || newPasswordERR || confirmNewPasswordERR) {
       return;
     } else {
-      dispatch(update(currentPassword, newPassword)).then(() => {
+      dispatch(updateToken(userInputs)).then(() => {
         props.history.push("../home");
       });
     }

@@ -1,44 +1,30 @@
 import axios from "axios";
 import AuthHeader from './auth-header';
 
-const usertoken=AuthHeader();
+const usertoken = AuthHeader();
 const API_URL = "https://devcamp-api-node.herokuapp.com/api/v1/auth/";
 
-const register = (name, email, password, role) => {
+const register = (userInputs) => {
+  console.log(userInputs);
   return axios.post(
-    API_URL + "register",
-    {
-      name,
-      email,
-      password,
-      role,
-    },
+    API_URL + "register",    
+      userInputs,    
     {
       headers: { "Content-Type": "application/json" },
     }
   );
-  // .then((response) => {
-  //   if (response.data.token) {
-  //     localStorage.setItem("user", JSON.stringify(response.data.token));
-  //   }
-  //   return response.data;
-  // });
 };
 
-const login = (email, password) => {
+const login = (userInputs) => {
   return axios
     .post(
-      API_URL + "login",
-      {
-        email,
-        password,
-      },
+      API_URL + "login",      
+        userInputs,      
       {
         headers: { "Content-Type": "application/json" },
       }
     )
     .then((response) => {
-      console.log(response);
       if (response.data.token) {
         localStorage.setItem("user", JSON.stringify(response.data.token));
       }
@@ -49,35 +35,31 @@ const login = (email, password) => {
 const reset = (email) => {
   return axios.post(
     API_URL + "forgotpassword",
-    { email },
+     email ,
     {
       headers: { "Content-Type": "application/json" },
     }
   );
 };
 
-
-
-const update = (currentPassword,newPassword) => {     
-      return axios.put(API_URL + "updatepassword", {currentPassword,newPassword},    
-      {
-          headers:{'Content-Type': 'application/json',
-                    Authorization: usertoken,          
-      }}) 
+const update = (userInputs) => {  
+  return axios.put(API_URL + "updatepassword", 
+   userInputs ,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: usertoken,
+      }
+    })
 };
 
-
-
 const logout = () => {
-  const user = localStorage.getItem("user");
-  console.log("userTocenBefore", user);
   return axios
-    .get(API_URL + "logout", { headers: { Authorization: `Bearer ${user}` } })
+    .get(API_URL + "logout", { headers: { Authorization: usertoken } })
     .then(() => {
       localStorage.removeItem("user");
     })
-    .catch((err) => {});
-  console.log("userTokenAfter", user);
+    .catch((err) => { });
 };
 
 export default {
