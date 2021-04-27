@@ -1,0 +1,120 @@
+.reset {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.resetForm {
+  width: 730px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 0px;
+  margin-top: 140px;
+  padding: 30px 40px 40px 40px;
+}
+
+.resetForm h4 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  margin: 15px 0;
+  font-size: 15px;
+  line-height: 24px;
+}
+
+.resetForm h1 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  width: 279px;
+  height: 48px;
+  font-size: 38px;
+  line-height: 48px;
+  margin: 0;
+  color: #212529;
+}
+
+.resetButton {
+  width: 640px;
+  height: 38px;
+  background: #343a40;
+  border: 1px solid #343a40;
+}
+
+.resetInp {
+  width: 640px;
+  height: 38px;
+  background: #ffffff;
+  border: 1px solid #ced4da;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.resetLabel {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 24px;
+  color: #212529;
+}
+
+.resetLabel,
+.resetInp,
+.resetButton {
+  margin-top: 15px;
+}
+
+.is-danger {
+  color: #e05433;
+}
+
+@media screen and (max-width: 960px) {
+  .resetForm {
+    width: 500px;
+    padding: 30px 20px 40px 20px;
+    margin-top: 110px;
+  }
+  .resetForm h1 {
+    width: 160px;
+    font-size: 24px;
+    line-height: normal;
+  }
+  .resetForm h4 {
+    line-height: 18px;
+  }
+  .resetForm .resetInp,
+  .resetForm .resetButton {
+    width: 460px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .resetForm {
+    width: 260px;
+    padding: 30px 20px 40px 20px;
+    margin-top: 80px;
+  }
+  .resetForm h1 {
+    width: 160px;
+    font-size: 24px;
+    line-height: normal;
+  }
+  .resetForm h4 {
+    line-height: 18px;
+  }
+  .resetForm .resetInp,
+  .resetForm .resetButton {
+    width: 220px;
+  }
+}
+/*# sourceMappingURL=reset.css.map */

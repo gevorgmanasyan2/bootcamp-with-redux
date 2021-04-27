@@ -16,16 +16,13 @@ import {
 } from "./types";
 
 import AuthService from "../services/auth.service";
-import axios from "axios";
-
-const API_URL = "https://devcamp-api-node.herokuapp.com/api/v1/auth/";
 
 export const registerToken = (userInputs) => (dispatch) => {
   console.log(userInputs);
   dispatch({
     type: REGISTER_START,
   });
-  return AuthService.register(userInputs).then(    
+  return AuthService.register(userInputs).then(
     (response) => {
       dispatch({
         type: REGISTER_SUCCESS,

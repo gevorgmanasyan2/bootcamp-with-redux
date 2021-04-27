@@ -6,8 +6,4 @@ const getBootcamp = () => {
   return axios.get(API_URL + "bootcamps");
 };
 
-export
-{
-  getBootcamp, 
-}
-
+export { getBootcamp };

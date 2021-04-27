@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Login from "../login/login";
 import Intro from "../intro/intro";
 import Update from "../update/update";
 import Register from "../register/register";
 import Home from "../home/home";
-import "./nav.css";
+import "../../components/styles/nav.css";
 import devcump from "../../public/images/Vector.png";
 import line from "../../public/images/_.png";
 import headImg from "../../public/images/headImg.png";
@@ -16,13 +16,11 @@ import {
   Switch,
   NavLink,
 } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { logout } from "../../actions/auth";
 
 const LoginNav = (props) => {
-  // const token = useSelector((state) => state.auth.user.token);
   const dispatch = useDispatch();
-  // console.log(token);
   const OnDropDown = () => {
     let content = document.getElementById("dropdown-content");
     if (
@@ -35,13 +33,7 @@ const LoginNav = (props) => {
     }
   };
   const OnLogOut = () => {
-    dispatch(logout())
-      // .then(() => {
-      //   console.log("loginNavOnlogOutEventOK");
-      // })
-      // .catch((err) => {
-      //   console.log("loginNavErr");
-      // });
+    dispatch(logout());
   };
   const UpdatePassword = () => {};
 
@@ -95,7 +87,7 @@ const LoginNav = (props) => {
               </div>
             </NavLink>
             <NavLink to="intro" exact className="nav">
-              <div>
+              <div className="browseboot">
                 <h3>Browse Bootcamps</h3>
               </div>
             </NavLink>

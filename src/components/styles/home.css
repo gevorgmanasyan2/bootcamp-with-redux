@@ -1,0 +1,222 @@
+.grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 50px 100px 45px 100px;
+}
+
+.byLocation {
+  height: 188px;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.byLocation h1 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  margin: 0;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.filterForm {
+  margin-top: 20px;
+}
+
+.filterForm h1 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 29px;
+  color: #212529;
+}
+
+.filterForm label {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 24px;
+  color: #212529;
+}
+
+.filterInput {
+  height: 38px;
+  margin-bottom: 25px;
+  margin-top: 5px;
+  border: 1px solid #ced4da;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+}
+
+.items {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+}
+
+.mainGrid {
+  margin-left: 30px;
+}
+
+.inputs {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  -webkit-box-pack: unset;
+      -ms-flex-pack: unset;
+          justify-content: unset;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  grid-gap: 5px;
+  margin: 20px 0;
+}
+
+.homeInp {
+  height: 38px;
+  border: 1px solid #ced4da;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.byLocButton {
+  height: 38px;
+  background: #e05433;
+  border: 1px solid #e05433;
+  width: 100%;
+}
+
+.itemHeader {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.itemHeader h1 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  color: #e05433;
+}
+
+.count {
+  width: 33px;
+  height: 23px;
+  text-align: center;
+  background: #28a745;
+  color: #ffffff;
+}
+
+.city {
+  background: #343a40;
+  color: #ffffff;
+  line-height: 1.5;
+  font-weight: bold;
+  font-size: 12px;
+  padding-left: 5px;
+}
+
+.skil {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.description {
+  width: 445px;
+  padding: 0 0 0 20px;
+}
+
+.next,
+.numbers {
+  border: 1px solid #dee2e6;
+  font-family: Roboto;
+  font-size: 15px;
+  color: #e05433;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.pagin {
+  margin-top: 20px;
+}
+
+.activeBack {
+  background-color: darksalmon;
+}
+
+@media screen and (max-width: 1230px) {
+  .grid {
+    -ms-grid-columns: auto;
+        grid-template-columns: auto;
+  }
+  .byLocButton {
+    width: 100%;
+  }
+  .filterInput {
+    width: 100%;
+  }
+  .mainGrid {
+    margin-left: 0%;
+    margin-top: 30px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .description {
+    padding: 0 0 0 20px;
+    width: 230px;
+  }
+  .skil {
+    line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .description {
+    padding: 0%;
+    width: 240px;
+  }
+  .items {
+    -ms-grid-columns: auto;
+        grid-template-columns: auto;
+  }
+  .homeInp {
+    width: 100px;
+  }
+  .city {
+    margin: 0;
+  }
+  .skil {
+    line-height: 18px;
+    font-size: 14px;
+  }
+}
+/*# sourceMappingURL=home.css.map */

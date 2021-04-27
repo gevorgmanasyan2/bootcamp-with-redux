@@ -141,7 +141,8 @@
     padding: 45px 20px 60px 20px;
     margin-top: 80px;
   }
-  .inp, .formBtn {
+  .inp,
+  .formBtn {
     width: 210px;
   }
   .formFooter {

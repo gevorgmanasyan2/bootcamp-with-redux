@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "./home.css";
+import "../../components/styles/home.css";
 import image1 from "../../public/images/image_1.png";
 import { getBootcamp } from "../../services/user.service";
 
 const Home = () => {
+
   const [data, setData] = useState();
   const [page, setPage] = useState(1);
   const [currentpage, setCuurentpage] = useState(1);
@@ -44,19 +45,19 @@ const Home = () => {
     // filter
     return [
       ...array.filter((value, n) => {
-        return n >= index && n < index + size && n <= 4;
+        return n >= index && n < index+size;
       }),
     ];
   };
 
   function GetPageinValue(e) {
-    let index = e.target.innerHTML;
+    let index = e.target.innerHTML;   
     if (index === "Previous") {
-      if (parseInt(currentpage) > 1) {
-        index = parseInt(currentpage) - 1;
+      if (currentpage > 1) {
+        index = parseInt(currentpage) - 1;       
       } else {
-        index = 1;
-      }
+        index = 1;            
+      }      
     }
     if (index === "Next") {
       if ((parseInt(currentpage) + 1) * 4 <= data.length + 3) {
@@ -64,11 +65,11 @@ const Home = () => {
       } else {
         index = parseInt(currentpage);
       }
-    }
+    }    
     setCuurentpage(index);
-    setPage(index);
+    setPage(index);    
   }
-
+ 
   return (
     <>
       <div className="grid">
@@ -149,7 +150,7 @@ const Home = () => {
 
           <div className="items">
             <div className="pagin">
-              <a className="next" href="#" onClick={GetPageinValue}>
+              <a className="next numbers" href="#" onClick={GetPageinValue}>
                 Previous
               </a>
               {data &&
@@ -167,7 +168,7 @@ const Home = () => {
                   page,
                   4
                 )}
-              <a className="next" href="#" onClick={GetPageinValue}>
+              <a className="next numbers" href="#" onClick={GetPageinValue}>
                 Next
               </a>
             </div>

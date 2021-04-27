@@ -5,7 +5,7 @@
   @include CenteredGrid(auto);
 }
 .logForn {
-  width: 540px;  
+  width: 540px;
   margin-top: 104px;
   background: $textColor;
   border: 1px solid rgba(0, 0, 0, 0.125);
@@ -14,9 +14,9 @@
   padding: 45px 45px 60px 45px;
 }
 .loginHeader {
-  @include displayGrid(auto auto); 
+  @include displayGrid(auto auto);
   justify-content: start;
-  align-items: center; 
+  align-items: center;
 }
 .loginLog {
   background: $textColor;
@@ -29,22 +29,22 @@
 }
 
 .loginHeader h1 {
-    @include textStyle;  
-  font-size: 40px;  
-  line-height: 48px; 
+  @include textStyle;
+  font-size: 40px;
+  line-height: 48px;
   color: $formTextColor;
   margin: 0;
 }
 
 .fLabel {
-    @include textStyle;  
-  font-size: 16px;  
-  line-height: 24px; 
+  @include textStyle;
+  font-size: 16px;
+  line-height: 24px;
   color: $formTextColor;
 }
 .inp {
   width: 450px;
-  height: 38px;  
+  height: 38px;
   margin-top: 5px;
   background: $textColor;
   border: $whitebuttonBorder;
@@ -62,7 +62,7 @@
   font-size: 16px;
 }
 .formFooter {
-    @include displayGrid(auto auto);  
+  @include displayGrid(auto auto);
   width: 240px;
   margin: 5px;
 }
@@ -82,32 +82,33 @@
   margin: 15px 0;
 }
 .formText h5 {
-    @include textStyle; 
-  margin: 10px 0;  
-  font-size: 18px; 
-  line-height: 24px;  
+  @include textStyle;
+  margin: 10px 0;
+  font-size: 18px;
+  line-height: 24px;
   color: $formTextColor;
 }
 .is-danger {
   color: $orangeColor;
 }
-@media screen and (max-width: 560px) { 
-   .logForn{
-       width: 250px;
-       padding: 45px 20px 60px 20px;
-       margin-top: 80px;
-   }
-   .inp, .formBtn{
-       width: 210px;
-   }
-   .formFooter{
-       width: 200px;
-       h5{
-           line-height: normal;
-       }
-   }
-   .formText h5{
-       font-size: 16px;
-       line-height: normal;
-   }
+@media screen and (max-width: 560px) {
+  .logForn {
+    width: 250px;
+    padding: 45px 20px 60px 20px;
+    margin-top: 80px;
   }
+  .inp,
+  .formBtn {
+    width: 210px;
+  }
+  .formFooter {
+    width: 200px;
+    h5 {
+      line-height: normal;
+    }
+  }
+  .formText h5 {
+    font-size: 16px;
+    line-height: normal;
+  }
+}

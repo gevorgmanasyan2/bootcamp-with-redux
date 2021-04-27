@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import '../../components/styles/login.css';
+import "../../components/styles/login.css";
 import login1 from "../../public/images/arrowLog.png";
 import login2 from "../../public/images/arrowLog2.png";
 import Home from "../home/home";
@@ -10,7 +10,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import Validation from "../validation";
 
 const Login = (props) => {
-  const isLogin = AuthHeader(); 
+  const isLogin = AuthHeader();
   const dispatch = useDispatch();
   const [values, setValues] = useState({ email: "", password: "" });
   const [error, setError] = useState({ email: "", password: "" });
@@ -26,12 +26,12 @@ const Login = (props) => {
 
   const SendDataToBackend = (errors) => {
     const { email, password } = values;
-    const userInputs={ email, password };
+    const userInputs = { email, password };
     const emailErr = error.email;
     const passwordErr = error.password;
     if (emailErr || passwordErr) {
       return;
-    } else {     
+    } else {
       dispatch(loginToken(userInputs))
         .then(() => {})
         .catch(() => {});
@@ -86,7 +86,7 @@ const Login = (props) => {
                       required
                       autoComplete="off"
                     />
-                    <ErrorMessage                      
+                    <ErrorMessage
                       className="is-danger"
                       name="email"
                       component="div"
@@ -104,7 +104,7 @@ const Login = (props) => {
                       required
                       autoComplete="off"
                     />
-                    <ErrorMessage                      
+                    <ErrorMessage
                       className="is-danger"
                       name="password"
                       component="div"

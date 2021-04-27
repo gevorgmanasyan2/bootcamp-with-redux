@@ -1,0 +1,97 @@
+@import "./mixins";
+@import "./variables";
+
+.reset {
+  @include CenteredGrid(auto);
+}
+.resetForm {
+  width: 730px;
+  background: $textColor;
+  border: $darkbuttonBorder;
+  box-sizing: border-box;
+  border-radius: 0px;
+  margin-top: 140px;
+  padding: 30px 40px 40px 40px;
+  h4 {
+    @include validStyle;
+    margin: 15px 0;
+    font-size: 15px;
+    line-height: 24px;
+  }
+  h1 {
+    @include validStyle;
+    width: 279px;
+    height: 48px;
+    font-size: 38px;
+    line-height: 48px;
+    margin: 0;
+    color: $formTextColor;
+  }
+}
+
+.resetButton {
+  width: 640px;
+  height: 38px;
+  background: #343a40;
+  border: 1px solid #343a40;
+}
+.resetInp {
+  width: 640px;
+  height: 38px;
+  background: $textColor;
+  border: $whitebuttonBorder;
+  box-sizing: border-box;
+}
+.resetLabel {
+  @include validStyle;
+  font-size: 15px;
+  line-height: 24px;
+  color: $formTextColor;
+}
+.resetLabel,
+.resetInp,
+.resetButton {
+  margin-top: 15px;
+}
+.is-danger {
+  color: $orangeColor;
+}
+
+@media screen and (max-width: 960px) {
+  .resetForm {
+    width: 500px;
+    padding: 30px 20px 40px 20px;
+    margin-top: 110px;
+    h1 {
+      width: 160px;
+      font-size: 24px;
+      line-height: normal;
+    }
+    h4 {
+      line-height: 18px;
+    }
+    .resetInp,
+    .resetButton {
+      width: 460px;
+    }
+  }
+}
+@media screen and (max-width: 560px) {
+  .resetForm {
+    width: 260px;
+    padding: 30px 20px 40px 20px;
+    margin-top: 80px;
+    h1 {
+      width: 160px;
+      font-size: 24px;
+      line-height: normal;
+    }
+    h4 {
+      line-height: 18px;
+    }
+    .resetInp,
+    .resetButton {
+      width: 220px;
+    }
+  }
+}

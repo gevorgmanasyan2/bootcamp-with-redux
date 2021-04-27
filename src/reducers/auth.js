@@ -11,9 +11,9 @@ import {
   UPDATE_START,
   UPDATE_SUCCESS,
   UPDATE_FAIL,
-  LOGOUT
+  LOGOUT,
 } from "../actions/types";
-import AuthHeader from '../services/auth-header';
+import AuthHeader from "../services/auth-header";
 
 const user = AuthHeader();
 
@@ -75,7 +75,7 @@ export default function (state = initialState, action) {
     case UPDATE_START:
       return {
         ...state,
-        user: payload
+        user: payload,
       };
     case UPDATE_SUCCESS:
       return {

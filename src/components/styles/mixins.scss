@@ -1,24 +1,28 @@
 @mixin displayGrid($column) {
-    display: grid;
-    grid-template-columns:$column;
+  display: grid;
+  grid-template-columns: $column;
 }
 @mixin CenteredGrid($column) {
-    display: grid;
-    grid-template-columns:$column;
-    justify-content: center;
-    align-items: center;
+  display: grid;
+  grid-template-columns: $column;
+  justify-content: center;
+  align-items: center;
+}
+@mixin spaceBetweenGrid($column) {
+  display: grid;
+  grid-template-columns: $column;
+  justify-content: space-between;
+  align-items: center;
 }
 @mixin textStyle {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 400;
-    letter-spacing: 0em;
-    text-align: left;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0em;
+  text-align: left;
 }
-@mixin validStyle{
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
+@mixin validStyle {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
 }
-
-

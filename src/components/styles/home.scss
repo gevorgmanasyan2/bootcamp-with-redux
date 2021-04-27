@@ -1,0 +1,163 @@
+@import "./variables";
+@import "./mixins.scss";
+
+.grid {
+  @include displayGrid(auto auto);
+  align-items: flex-start;
+  justify-content: center;
+  padding: 50px 100px 45px 100px;
+}
+.byLocation {
+  height: 188px;
+  padding: 20px;
+  background: $textColor;
+  border: $darkbuttonBorder;
+  box-sizing: border-box;
+  h1 {
+    @include validStyle;
+    margin: 0;
+    font-size: 24px;
+    line-height: 29px;
+  }
+}
+
+.filterForm {
+  margin-top: 20px;
+  h1 {
+    @include validStyle;
+    font-size: 24px;
+    line-height: 29px;
+    color: $formTextColor;
+  }
+  label {
+    @include validStyle;
+    font-size: 15px;
+    line-height: 24px;
+    color: $formTextColor;
+  }
+}
+.filterInput {
+  height: 38px;
+  margin-bottom: 25px;
+  margin-top: 5px;
+  border: $whitebuttonBorder;
+  box-sizing: border-box;
+  width: 100%;
+}
+.items {
+  @include displayGrid(auto auto);
+}
+.mainGrid {
+  margin-left: 30px;
+}
+.inputs {
+  @include displayGrid(auto auto);
+  justify-content: unset;
+  align-items: center;
+  grid-gap: 5px;
+  margin: 20px 0;
+}
+.homeInp {
+  height: 38px;
+  border: $whitebuttonBorder;
+  box-sizing: border-box;
+}
+.byLocButton {
+  height: 38px;
+  background: $orangeColor;
+  border: $orangebuttonBorder;
+  width: 100%;
+}
+.itemHeader {
+  @include spaceBetweenGrid(auto auto);
+}
+.itemHeader h1 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  color: $orangeColor;
+}
+.count {
+  width: 33px;
+  height: 23px;
+  text-align: center;
+  background: #28a745;
+  color: $textColor;
+}
+.city {
+  background: #343a40;
+  color: $textColor;
+  line-height: 1.5;
+  font-weight: bold;
+  font-size: 12px;
+  padding-left: 5px;
+}
+.skil {
+  @include validStyle;
+  font-size: 16px;
+  line-height: 24px;
+}
+.description {
+  width: 445px;
+  padding: 0 0 0 20px;
+}
+.next,
+.numbers {
+  border: 1px solid #dee2e6;
+  font-family: $fontFamily;
+  font-size: 15px;
+  color: $orangeColor;
+  padding: 10px;
+  text-decoration: none;
+}
+.pagin {
+  margin-top: 20px;
+}
+.activeBack{
+  background-color: darksalmon;
+}
+@media screen and (max-width: 1230px) {
+  .grid {
+    grid-template-columns: auto;
+  }
+  .byLocButton {
+    width: 100%;
+  }
+  .filterInput {
+    width: 100%;
+  }
+  .mainGrid {
+    margin-left: 0%;
+    margin-top: 30px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .description {
+    padding: 0 0 0 20px;
+    width: 230px;
+  }
+  .skil {
+    line-height: 20px;
+  }
+}
+@media screen and (max-width: 560px) {
+  .description {
+    padding: 0%;
+    width: 240px;
+  }
+  .items {
+    grid-template-columns: auto;
+  }
+  .homeInp {
+    width: 100px;
+  }
+  .city {
+    margin: 0;
+  }
+  .skil {
+    line-height: 18px;
+    font-size: 14px;
+  }
+}

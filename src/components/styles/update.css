@@ -1,0 +1,99 @@
+.update {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.updateForm {
+  width: 730px;
+  margin-top: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 40px;
+}
+
+.updateHeader {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  margin: 0;
+  font-size: 40px;
+  line-height: 48px;
+  color: #212529;
+}
+
+.updateLabel {
+  font-family: Roboto;
+  font-size: 15px;
+  line-height: 24px;
+}
+
+.updateInp {
+  width: 640px;
+  height: 38px;
+  margin-top: 5px;
+  border: 1px solid #ced4da;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-left: 10px;
+}
+
+.updateBtnInp {
+  width: 640px;
+  height: 38px;
+  background: #343a40;
+  border: 1px solid #343a40;
+  color: #ffffff;
+  font-family: Roboto;
+  font-size: 15px;
+}
+
+.updateItem {
+  margin: 15px 0;
+}
+
+.is-danger {
+  color: #e05433;
+}
+
+@media screen and (max-width: 960px) {
+  .updateForm {
+    width: 500px;
+    padding: 40px 20px 40px 20px;
+  }
+  .updateForm h1 {
+    font-size: 24px;
+  }
+  .updateInp {
+    width: 460px;
+  }
+  .updateBtnInp {
+    width: 460px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .updateForm {
+    width: 260px;
+    padding: 40px 20px 40px 20px;
+  }
+  .updateForm h1 {
+    font-size: 24px;
+  }
+  .updateInp {
+    width: 220px;
+    margin: 0%;
+  }
+  .updateBtnInp {
+    width: 220px;
+  }
+}
+/*# sourceMappingURL=update.css.map */

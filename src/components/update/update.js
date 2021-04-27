@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import "./update.css";
+import "../../components/styles/update.css";
 import { useDispatch } from "react-redux";
 import { updateToken } from "../../actions/auth";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import Validation from "../validation";
 
-
 const Update = (props) => {
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
   const [values, setValues] = useState({
     currentPassword: "",
     newPassword: "",
@@ -25,7 +24,7 @@ const Update = (props) => {
 
   const SendDataToBackend = () => {
     const { currentPassword, newPassword } = values;
-    const userInputs={ currentPassword, newPassword };
+    const userInputs = { currentPassword, newPassword };
     const { currentPasswordERR, newPasswordERR, confirmNewPasswordERR } = error;
     if (currentPasswordERR === "" || newPasswordERR || confirmNewPasswordERR) {
       return;
@@ -46,7 +45,7 @@ const Update = (props) => {
               newPassword: "",
               confirmNewPassword: "",
             }}
-            validate={(values) => {             
+            validate={(values) => {
               const errors = Validation(values);
               setError({
                 currentPasswordERR: errors.currentPassword,

@@ -144,7 +144,9 @@
     width: 250px;
     padding: 0 20px 65px 20px;
   }
-  .regInputs input, .regRadio, .regButton {
+  .regInputs input,
+  .regRadio,
+  .regButton {
     width: 210px;
   }
   .regText {

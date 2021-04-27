@@ -1,0 +1,79 @@
+@import "./mixins";
+@import "./variables";
+
+.update {
+  @include CenteredGrid(auto);
+}
+.updateForm {
+  width: 730px;
+  margin-top: 50px;
+  border: $darkbuttonBorder;
+  box-sizing: border-box;
+  padding: 40px;
+}
+.updateHeader {
+  @include validStyle;
+  margin: 0;
+  font-size: 40px;
+  line-height: 48px;
+  color: $formTextColor;
+}
+.updateLabel {
+  font-family: $fontFamily;
+  font-size: 15px;
+  line-height: 24px;
+}
+.updateInp {
+  width: 640px;
+  height: 38px;
+  margin-top: 5px;
+  border: $whitebuttonBorder;
+  box-sizing: border-box;
+  padding-left: 10px;
+}
+.updateBtnInp {
+  width: 640px;
+  height: 38px;
+  background: #343a40;
+  border: 1px solid #343a40;
+  color: $textColor;
+  font-family: $fontFamily;
+  font-size: 15px;
+}
+.updateItem {
+  margin: 15px 0;
+}
+.is-danger {
+  color: $orangeColor;
+}
+@media screen and (max-width: 960px) {
+  .updateForm {
+    width: 500px;
+    padding: 40px 20px 40px 20px;
+    h1 {
+      font-size: 24px;
+    }
+  }
+  .updateInp {
+    width: 460px;
+  }
+  .updateBtnInp {
+    width: 460px;
+  }
+}
+@media screen and (max-width: 560px) {
+  .updateForm {
+    width: 260px;
+    padding: 40px 20px 40px 20px;
+    h1 {
+      font-size: 24px;
+    }
+  }
+  .updateInp {
+    width: 220px;
+    margin: 0%;
+  }
+  .updateBtnInp {
+    width: 220px;
+  }
+}

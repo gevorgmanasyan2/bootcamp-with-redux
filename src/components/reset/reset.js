@@ -1,19 +1,21 @@
-import React, { useState,useEffect } from "react";
-import "./reset.css";
+import React, { useState, useEffect } from "react";
+import "../../components/styles/reset.css";
 import { useDispatch } from "react-redux";
 import { resetToken } from "../../actions/auth";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import Validation from "../validation";
 
 const Reset = (props) => {
-  useEffect(()=>{
-    alert("Sorry\n\n You can not reset your password\n\n Api call from here is not working!!!!!")
-  },[])
-  
+  useEffect(() => {
+    alert(
+      "Sorry\n\n You can not reset your password\n\n Api call from here is not working!!!!!"
+    );
+  }, []);
+
   const dispatch = useDispatch();
   const [values, setValues] = useState({ email: "" });
   const [error, setError] = useState({ email: "" });
-  
+
   const handleChange = (e) => {
     setValues({ email: e.target.value });
   };
